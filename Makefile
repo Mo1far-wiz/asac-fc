@@ -1,7 +1,7 @@
-TARGET = build/asac-fc
+TARGET = cmake-build-debug/asac-fc
 # Depends on your system...
-RP2040_USB_PATH = /media/victor/RPI-RP21/
-DEFAULT_SERIAL_PORT = /dev/ttyACM0
+RP2040_USB_PATH = /dev/cu.usbmodem2101
+DEFAULT_SERIAL_PORT = /dev/cu.usbmodem2101
 
 # Builds firmware using Raspberry Pis build tools
 all:
@@ -29,14 +29,14 @@ flash:
 
 # Flashes rp2040 when it's registered as USB device.
 flash_usb:
-	sudo cp ${TARGET}.uf2 ${RP2040_USB_PATH} && sudo sync
+	sudo -S cp ${TARGET}.uf2 ${RP2040_USB_PATH} && sudo sync
 
 # Monitor serial port
 monitor:
 	tools/monitor.py ${DEFAULT_SERIAL_PORT}
 
 clean:
-	rm -rf build/*
+	rm -rf cmake-build-debug/*
 
 
 .PHONY: all flash_serial flash flash_usb scripts force

@@ -30,11 +30,13 @@ int main() {
     stdio_usb_init();
     system_init();
 
+    sleep_ms(5000);
+
     // Initialize all drivers
     state.mode = MODE_BOOTING;
     printf("Booting up...\n");
-    printf("Initializing drivers\n");
 
+    printf("Initializing drivers...\t\t\n");
     // Initialize LED driver and blink led boot-up sequence
     init_driver(led_init, "Led");
     led_run_boot_sequence();
@@ -42,12 +44,20 @@ int main() {
     // Turn RED led high to indicate we're booting
     led_set(LED_RED, 1);
 
+
+    printf("Initializing Settings drivers...\n");
     init_driver(settings_init,       "Settings");
+    printf("Initializing Receiver drivers...\n");
     init_driver(receiver_init,       "Receiver");
+    printf("Initializing Battery ADC drivers...\n");
     init_driver(battery_adc_init,    "Battery ADC");
+    printf("Initializing IMU drivers...\n");
     init_driver(imu_init,            "IMU");
+    printf("Initializing Controller drivers...\n");
     init_driver(controller_init,     "Controller");
+    printf("Initializing Motors drivers...\n");
     init_driver(motors_init,         "Motors");
+    printf("Initializing Serial MAVlink drivers...\n");
     init_driver(serial_mavlink_init, "Serial MAVlink");
     #ifdef TELEMETRY_LOGGING
         init_driver(telemetry_init,   "Telemetry");
@@ -56,6 +66,7 @@ int main() {
     // Done booting
     led_set(LED_RED, 0);
     led_set(LED_GREEN, 1);
+    printf("\tBooting is done...\t\t\n");
 
     if (init_result != 0) {
         state.mode = MODE_ERROR;
@@ -86,7 +97,10 @@ int main() {
     vsrtos_scheduler_start();
 
     // Should never reach this point
-    while (1);
+    while (1)
+    {
+        printf("main.c - 91 : Should never reach this point\n");
+    }
 
     return 0;
 }
