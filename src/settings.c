@@ -64,10 +64,12 @@ void settings_write_to_flash(const system_settings_t* settings) {
     // Put primary core in blocked state before we write the flash
     // Inspired by this post: https://forums.raspberrypi.com/viewtopic.php?t=311709
     printf("settings.c\t-65: Multicore lockout blocking start\n");
-    multicore_lockout_start_blocking();
+    //multicore_lockout_start_blocking();
+
 
     uint32_t uint31_status = save_and_disable_interrupts();
     int int_status = (int)uint31_status;
+    printf("%s -%d: int_status : %d\n", __FILE_NAME__, __LINE__, int_status);
     // For some reason we need to erase the flash before writing, not sure why.
     flash_range_erase(FLASH_TARGET_OFFSET, FLASH_SECTOR_SIZE);
     flash_range_program(FLASH_TARGET_OFFSET, flash_buf, SETTINGS_FLASH_SIZE);
@@ -75,7 +77,8 @@ void settings_write_to_flash(const system_settings_t* settings) {
 
     // Put primary core to running again
     printf("settings.c\t-76: Put primary core to running again\n");
-    multicore_lockout_end_blocking();
+    //multicore_lockout_end_blocking();
+    printf("%s -%d: Multicore lockout blocking end\n", __FILE_NAME__, __LINE__);
 }
 
 void settings_reset_default() {

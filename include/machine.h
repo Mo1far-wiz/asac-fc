@@ -26,6 +26,8 @@
 #define PIN_IMU_INTERRUPT_2    9
 #define IMU_SPI_BUS           spi1
 
+#define I2C_BUS_IMU i2c0
+
 #define PIN_VUSB_SENSE        19
 
 #define PIN_SDA1               2

@@ -73,7 +73,7 @@ add_definitions(
 add_compile_definitions(
   RP2040 # Used by VSRTOS
   # Uncomment desired defines to remove
-  #USE_DEFAULT_SETTINGS
+  USE_DEFAULT_SETTINGS
   #LINUX
 )
 

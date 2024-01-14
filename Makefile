@@ -1,7 +1,7 @@
 TARGET = cmake-build-debug/asac-fc
 # Depends on your system...
-RP2040_USB_PATH = /dev/cu.usbmodem2101
-DEFAULT_SERIAL_PORT = /dev/cu.usbmodem2101
+RP2040_USB_PATH = /dev/cu.usbmodem1101
+DEFAULT_SERIAL_PORT = /dev/cu.usbmodem1101
 
 # Builds firmware using Raspberry Pis build tools
 all:

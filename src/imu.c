@@ -44,7 +44,7 @@ int imu_init() {
         gpio_pull_up(PIN_SCL1);
 
         // Enable interrupts
-        result = mpu6050_init(&mpu, I2C_BUS_IMU);
+        result = 0;//mpu6050_init(&mpu, I2C_BUS_IMU);
         if (result != 0) {
             return result;
         }

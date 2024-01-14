@@ -44,8 +44,8 @@
 #define IMU_ORIENTATION_Z -1
 
 
-// #define IMU_MPU_6050_I2C
-#define IMU_BMI270_SPI
+ #define IMU_MPU_6050_I2C
+// #define IMU_BMI270_SPI
 
 void system_init();
 

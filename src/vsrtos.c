@@ -58,7 +58,7 @@ static bool is_init = false;
 
 #define IDLE_TASK NULL
 
-//#define DEBUG_PRINT_EVERY_SEC
+#define DEBUG_PRINT_EVERY_SEC
 
 // Helper functions
 static task_t* get_next_task();
